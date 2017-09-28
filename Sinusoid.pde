@@ -1,10 +1,12 @@
+import java.awt.Rectangle; 
 PShader waves;
 float xdir = -1.2;
 VariableController xWeight = new FloatController(
-  "marchingXWeight", 0.25, 0.5
+  "marchingXWeight", 0.25, 0.5, 0.0, 1.0
 );
 VariableController rotionCenter = new VectorController(
-  "rotionCenter", new PVector(60,60), 0.99
+  "rotionCenter", new PVector(60,60), 0.99,
+  new Rectangle(0, 0, 90, 90)
 );
 void setup() {
   //size(640, 640, P3D);
