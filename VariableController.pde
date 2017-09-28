@@ -3,7 +3,7 @@ import java.awt.Rectangle;
 class VariableController<T> {
   PVector momentum;
   T value;
-  String name;
+  public String name;
   float drag;
 
   public VariableController(String name, T def, float drag) {
@@ -22,7 +22,9 @@ class VariableController<T> {
 
 class FloatController extends VariableController<Float> {
   float lowerBound, upperBound;
-  public FloatController(String name, Float def, float drag, float lowerBound, float upperrBound) {
+
+  public FloatController(String name, Float def, 
+      float drag, float lowerBound, float upperBound) {
     super(name, def, drag);
     this.lowerBound = lowerBound;
     this.upperBound = upperBound;
