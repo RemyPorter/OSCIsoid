@@ -1,7 +1,5 @@
 import java.awt.Rectangle; 
 PShader waves;
-float xdir = -1.2;
-
 
 GeneratorController MarchingX = GeneratorBuilder.create(this)
               .add("marchingXWeight", 1.0, 0.99, 0.0, 1.0)
@@ -14,9 +12,13 @@ GeneratorController Rotion = GeneratorBuilder.create(this)
                 0.999,new Rectangle(0,0,100,100))
               .build();
 
+OscWrapper osc = new OscWrapper(4601)
+              .add("marchingX", MarchingX)
+              .add("rotion", Rotion);
+
 void setup() {
-  //size(640, 640, P3D);
-  fullScreen(P3D);
+  size(640, 640, P3D);
+  //fullScreen(P3D);
   waves = loadShader("waves.glsl");
 }
 

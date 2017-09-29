@@ -30,14 +30,16 @@ public static class GeneratorBuilder {
 
   public GeneratorBuilder add(String name, float def, float drag,
      float lowerBound, float upperBound) {
-    this.vars.add(
-      host.new FloatController(name, def, drag, lowerBound, upperBound));
+    VariableController obj = host.new FloatController(name, def, drag, lowerBound, upperBound);
+    this.vars.add(obj);
+    
     return this;
   }
 
   public GeneratorBuilder add(String name, PVector def, float drag, Rectangle bounds) 
   {
-    this.vars.add(host.new VectorController(name, def, drag, bounds));
+    VariableController obj = host.new VectorController(name, def, drag, bounds);
+    this.vars.add(obj);
     return this;
   }
 
