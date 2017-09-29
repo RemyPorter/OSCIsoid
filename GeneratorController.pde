@@ -18,7 +18,30 @@ class GeneratorController {
   }
 }
 
-GeneratorController MarchingX = new GeneratorController(
-  new FloatController("marchingXWeight", 1.0, 0.99, 0.0, 1.0),
-  new FloatController("marchingXDir", -1.0, 0.99, -2, 2)
-);
+public static class GeneratorBuilder {
+  ArrayList<VariableController> vars = new ArrayList<VariableController>();
+  Sinusoid host;
+  protected GeneratorBuilder(Sinusoid host) {
+    this.host = host;
+  }
+  public static GeneratorBuilder create(Sinusoid host) {
+    return new GeneratorBuilder(host);
+  }
+
+  public GeneratorBuilder add(String name, float def, float drag,
+     float lowerBound, float upperBound) {
+    this.vars.add(
+      host.new FloatController(name, def, drag, lowerBound, upperBound));
+    return this;
+  }
+
+  public GeneratorBuilder add(String name, PVector def, float drag, Rectangle bounds) 
+  {
+    this.vars.add(host.new VectorController(name, def, drag, bounds));
+    return this;
+  }
+
+  public GeneratorController build() {
+    return host.new GeneratorController(vars.toArray(new VariableController[1]));
+  }
+}
