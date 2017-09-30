@@ -43,6 +43,18 @@ public static class GeneratorBuilder {
     return this;
   }
 
+  public GeneratorBuilder addWeight(String name) {
+    VariableController obj = host.new WeightController(name);
+    this.vars.add(obj);
+    return this;
+  }
+
+  public GeneratorBuilder addPosition(String name, float drag) {
+    VariableController obj = host.new PositionController(name, drag);
+    this.vars.add(obj);
+    return this;
+  }
+
   public GeneratorController build() {
     return host.new GeneratorController(vars.toArray(new VariableController[1]));
   }

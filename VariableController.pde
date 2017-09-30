@@ -58,3 +58,16 @@ class VectorController extends VariableController<PVector> {
     momentum.mult(drag);
   }
 }
+
+class WeightController extends FloatController {
+  public WeightController(String name) {
+    super(name, 0.0, 0.98, 0.0, 1.0);
+  }
+}
+
+class PositionController extends VectorController {
+  public PositionController(String name, float drag) {
+    super(name, new PVector(35, 35), drag, 
+      new Rectangle(0,0,90,90));
+  }
+}

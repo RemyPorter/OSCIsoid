@@ -22,13 +22,23 @@ class OscWrapper {
     String varName = parsed[3];
 
     if (!objectName.equals("sin")) return; //abort if this isn't for us
+    try {
+      float x = (float)msg.arguments()[0];
+      float y = (float)msg.arguments()[1];
+      
+      PVector force = new PVector(x, y);
+      if (gens.containsKey(genName)) {
+        gens.get(genName).hit(varName, force);
+      }
+    } catch (Exception ex) {
+      println(ex);
+      println(msg.typetag(), msg.addrPattern());
+    }
+  }
 
-    float x = (float)msg.arguments()[0];
-    float y = (float)msg.arguments()[1];
-    
-    PVector force = new PVector(x, y);
-    if (gens.containsKey(genName)) {
-      gens.get(genName).hit(varName, force);
+  public void set(PShader shader) {
+    for (GeneratorController g : gens.values()) {
+      g.set(shader);
     }
   }
 

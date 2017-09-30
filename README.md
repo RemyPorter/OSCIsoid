@@ -17,3 +17,6 @@ Finally, for the sketch, there's an OscWrapper, which takes OSC messages in the 
 
 ### Sonic-Pi
 For testing purposes, I'm using Sonic-Pi's OSC functionality to send test messages. `osc_tester.rb` is a Sonic-Pi loop which just sends a simple message every beat.
+
+## Running
+The sketch should be able to run as a standalone. Any software which can then send OSC messages to port 4601 can control it. It is VERY incomplete right now.
